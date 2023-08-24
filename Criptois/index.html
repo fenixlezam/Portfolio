@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>CRIPTOIS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #080808;
+            margin: 0; /* Elimina los márgenes predeterminados */
+        }
+        #banner{
+            padding: 0.1%;
+            color: #FFFFFF;
+            background-color: #949494;
+        }
+        /* Estilos para el menú */
+        #menu-container {
+            position: absolute; /* Establece un contexto de posicionamiento para el menú */
+            z-index: 1; /* Coloca el menú encima del video y la capa de sombra */
+            background-color:#080808;
+            padding: 10px;
+            display: flex;
+            text-align: center;
+            top: 0;
+    left: 0;
+    width: 100%;
+            justify-content: space-around;
+            align-items: center;
+         /* background-image: linear-gradient(to bottom, #0000000f 0%, #00000003 10%, #00b578 10%, 
+            #00b578 90%, #00000003 90%, #0000000f 100%);*/
+        }
+
+        .menu-item {
+            margin: 0 10px;
+            font-size: 18px;
+            color: #FFFFFF;
+            text-decoration: none;
+            transition: color 0.3s;
+            padding: 10px 20px;
+            border-radius: 5px;
+            /*background-color: #00b578;*/
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .menu-item:hover,
+        .menu-item:focus {
+            color: #ffe800;
+        }
+        .connect-wallet-button {
+            margin: 0 10px;
+            font-size: 18px;
+            color: #2b2b2b;
+            text-decoration: none;
+            transition: color 0.3s;
+            padding: 10px 20px;
+            border-radius: 50px;
+            background-color: #ffe800;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .connect-wallet-button:hover,
+        .connect-wallet-button:focus {
+            color: #000000;
+        }
+        #logo {
+          
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+        }
+
+        /* Estilos para la imagen */
+        #logo img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        /* Estilos para el contenedor del slider y la imagen estática */
+        #content-container {
+            display: flex;
+            align-items: stretch;
+            height: 100%;
+        }
+        /* Estilos para el div contenedor */
+        #slider-container {
+            width: 70%;
+            max-height: 480px;
+            overflow: hidden;
+        }
+
+        /* Estilos para el contenedor del slider y la imagen estática */
+        #content-container {
+            display: flex;
+            align-items: stretch;
+            height: 100%;
+        }
+        #content-container2 {
+            display: flex;
+            align-items: stretch;
+            height: 100%;
+        }
+
+
+
+
+        /* Estilos para el slider */
+        #slider {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        /* Estilos para los slides */
+        .slide {
+            flex: 1 0 100%;
+            height: 100%;
+        }
+
+        /* Estilos para las imágenes de los slides */
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Estilos para la imagen estática */
+        #static-image {
+            width: 30%;
+            max-height: 100%;
+            background-color: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        #static-image h3 {
+            color: #FFFFFF;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        #static-image p {
+            color: #FFFFFF;
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+       
+        #static-image img {
+            width: 50%;
+            height: 50%;
+            object-fit: cover;
+        }
+
+        #background-video {
+            width: 100%;
+    height: 100vh; /* Ajusta la altura al 100% del viewport */
+    position: relative;
+    z-index: -1;
+    object-fit: cover;
+}
+
+#video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Ajusta la altura al 100% del viewport */
+    background-color: rgba(0, 0, 0, 0.849); /* Capa oscura semitransparente */
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    font-size: 24px;
+}
+
+#logo2 {
+          
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 250px;
+          opacity: 0; /* Inicialmente, establece la opacidad en 0 para ocultar el logo */
+          animation: fadeInLogo 5s forwards; /* Aplica la animación "fadeInLogo" con duración de 1 segundo */
+}
+@keyframes fadeInLogo {
+    to {
+        opacity: 1; /* Al final de la animación, cambia la opacidad a 1 para mostrar el logo */
+    }
+}
+      /* Estilos para la imagen */
+      #logo2 img {
+          max-width: 100%;
+          max-height: 100%;
+      }
+
+#video-text {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 300; /* Define la ligereza de la fuente */
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Agrega sombra al texto */
+    opacity: 0; /* Inicialmente, establece la opacidad en 0 para ocultar el texto */
+    transform: translateX(100%); /* Mueve el texto hacia la derecha */
+    animation: slideIn 2s forwards; /* Cambia la duración de la animación a 2 segundos */
+}
+
+#video-overlay p {
+    opacity: 0; /* Inicialmente, establece la opacidad en 0 para ocultar el texto */
+    transform: translateX(100%); /* Mueve el texto hacia la derecha */
+    animation: slideIn 2s forwards; /* Aplica la animación "slideIn" con duración de 1 segundo */
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1; /* Al final de la animación, cambia la opacidad a 1 para mostrar el texto */
+        transform: translateX(0); /* Lleva el texto al centro de la pantalla */
+    }
+}
+
+#down-title {
+color: #FFFFFF;
+
+}
+
+#down-title2 {
+color: #FFFFFF;
+background-color: #000000;
+}
+
+#video-text h1 {
+    margin-top: 5px; /* Ajusta este valor según tus necesidades */
+}
+
+#marcas-section {
+    display: flex;
+    justify-content: space-around;  
+    align-items: center;
+    padding: 20px 20px; /* Agrega margen a los lados */
+    background-color: #080808;
+}
+
+.marca {
+    flex: 1;
+    max-width: calc(33.33% - 40px); /* Ajusta el ancho máximo con margen */
+    text-align: center;
+    margin: 0 10px; /* Ajusta el margen entre los logos */
+    transition: transform 0.3s; /* Agrega una transición suave al efecto de zoom */
+}
+
+.marca:hover {
+    transform: scale(1.1); /* Aplica un zoom in al pasar el mouse sobre la marca */
+}
+
+.marca img {
+    max-width: 40%;
+    height: auto;
+}
+
+#footer {
+color: #000000;
+background-color: #ffe800;
+}
+    </style>
+</head>
+<body>
+
+    <!-- Video sobre el menú -->
+    <video autoplay muted loop id="background-video">
+        <source src="NFT.mp4" type="video/mp4">
+        Tu navegador no soporta el elemento de video.
+    </video>
+
+
+    <div id="video-overlay">
+        <div id="logo2">
+            <img src="imagen.webp" alt="img">
+        </div>  
+        <p>CRIPTOIS</p>
+        <h1 id="video-text">LA NUEVA EXPERIENCIA CRIPTO</h1>
+        <p>Al alcance de todos</p>
+    </div>
+<!--Menu-->
+<div id="menu-container">
+
+    <!--Imagen logo-->
+
+    <a href="#" class="menu-item">INICIO</a>
+    <a href="#" class="menu-item">QUIÉNES SOMOS</a>
+    <a href="#" class="menu-item">GALERÍA</a>
+    <a href="#" class="menu-item">LA EMPRESA</a>
+    <a href="https://api.whatsapp.com/send/?phone=584121750761&text&type=phone_number&app_absent=0" class="connect-wallet-button">Contactanos</a>
+  <!--  <a href="#" class="connect-wallet-button">Conectar Wallet</a>-->
+</div>
+
+<div id="down-title">
+</br></br></br>
+    <center><h1>Posicionados con nuestras diferentes marcas</h1></center>
+    <center>Llevando la Blockchain a los confines del mundo, a toda hora y en todo momento</center>
+    </div>
+
+<!-- Sección de las marcas -->
+<div id="marcas-section">
+    <div class="marca">
+        <img src="imagen.webp" alt="Logo 1">
+    </div>
+    <div class="marca">
+        <img src="imagen2.webp" alt="Logo 2">
+    </div>
+    <div class="marca">
+        <img src="imagen3.webp" alt="Logo 3">
+    </div>
+</div>
+</br></br></br>
+
+<div id="down-title2">
+</br></br></br>
+    <center><h1>Una colección unica e irrepetible</h1></center>
+    <center>Diseños con valor a la espera de ser adquiridos, bajo codigo criptografico y reusabilidad garantizada</center>
+    
+</br></br></br>
+</div>
+    <!--Contenedor principal del slider y la imagen estática-->
+<div id="content-container">
+    <!--Slider-->
+     <div id="slider-container">
+         <div id="slider">
+             <div class="slide">
+                 <img src="prueba1.webp" alt="Slide 1">
+             </div>
+             <div class="slide">
+                 <img src="prueba2.webp" alt="Slide 2">
+             </div>
+             
+         </div>
+     </div>
+    <!--Imagen estática-->
+     <div id="static-image">
+    
+        <img src="imagen4.webp" alt="Imagen estática">
+        <h3>Todos nuestros NFT's</h3>
+        <p>En exhibición aquí</p>
+        <a href="#" class="connect-wallet-button">Ver colección</a>
+     </div>
+ </div>
+ <div id="down-title2">
+</br></br></br>
+</div>
+     <script>
+         // Código JavaScript para implementar el funcionamiento del slider
+         const slider = document.getElementById("slider");
+         let slideIndex = 0;
+         const slides = slider.getElementsByClassName("slide");
+         const totalSlides = slides.length;
+ 
+         function showSlide(index) {
+             slider.style.transform = `translateX(-${index * 100}%)`;
+         }
+ 
+         function nextSlide() {
+             slideIndex++;
+             if (slideIndex >= totalSlides) {
+                 slideIndex = 0;
+             }
+             showSlide(slideIndex);
+         }
+ 
+         setInterval(nextSlide, 3000);  // Cambiar de slide cada 3 segundos
+     </script>
+<div id="down-title">
+<center><h1>Ven a visitarnos</h1></center>
+<center>Nos encanta recibir a nuestros clientes, así que ven en cualquier</center>
+<center>momento durante las horas de oficina y te invitaremos nuestro exclusivo Cripto Café!</center> </br></br>
+</div>
+
+<div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" 
+src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q=C.C.%20Metr%C3%B3polis,%20Avenida%20Florencio%20Jim%C3%A9nez,%20Barquisimeto,%20Lara+(Criptois)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+<a href="https://www.gps.ie/car-satnav-gps/">Car Navigation Systems</a></iframe>
+</div>
+
+<div id="footer">
+</br></br>
+
+    <center>Copyright © 2023 Minería Digital Cripto Is - Todos los derechos reservados.</center>
+    <center>Web desarrollada por Ing. Fenix A. Lezana- 2023</center> </br>
+    </div>
+</body>

@@ -1,0 +1,332 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(20, 20, 20);
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+#logo {
+    width: 100px; /* Tamaño pequeño del logo */
+    height: auto;
+    margin-right: 20px;
+}
+
+#contact-button {
+    padding: 14px 50px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border: none;
+    box-shadow: #000000
+}
+
+
+#background-video {
+    width: 100%;
+height: 100vh; /* Ajusta la altura al 100% del viewport */
+position: relative;
+z-index: -1;
+object-fit: cover;
+}
+
+#video-overlay {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100vh; /* Ajusta la altura al 100% del viewport */
+background-color: rgba(0, 0, 0, 0.849); /* Capa oscura semitransparente */
+z-index: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+color: white;
+font-size: 24px;
+}
+
+#video-text {
+margin: 0;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-weight: 300; /* Define la ligereza de la fuente */
+color: white;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Agrega sombra al texto */
+opacity: 0; /* Inicialmente, establece la opacidad en 0 para ocultar el texto */
+transform: translateX(100%); /* Mueve el texto hacia la derecha */
+animation: slideIn 2s forwards; /* Cambia la duración de la animación a 2 segundos */
+}
+
+#video-overlay p {
+opacity: 0; /* Inicialmente, establece la opacidad en 0 para ocultar el texto */
+transform: translateX(100%); /* Mueve el texto hacia la derecha */
+animation: slideIn 2s forwards; /* Aplica la animación "slideIn" con duración de 1 segundo */
+}
+
+@keyframes slideIn {
+to {
+opacity: 1; /* Al final de la animación, cambia la opacidad a 1 para mostrar el texto */
+transform: translateX(0); /* Lleva el texto al centro de la pantalla */
+}
+}
+
+#logo2 {
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  opacity: 0; /* Inicialmente, establece la opacidad en 0 para ocultar el logo */
+  animation: fadeInLogo 5s forwards; /* Aplica la animación "fadeInLogo" con duración de 1 segundo */
+}
+@keyframes fadeInLogo {
+to {
+opacity: 1; /* Al final de la animación, cambia la opacidad a 1 para mostrar el logo */
+}
+}
+/* Estilos para la imagen */
+#logo2 img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 50%;
+}
+
+#logo3 {
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  opacity: 0; /* Inicialmente, establece la opacidad en 0 para ocultar el logo */
+  animation: fadeInLogo 5s forwards; /* Aplica la animación "fadeInLogo" con duración de 1 segundo */
+}
+@keyframes fadeInLogo {
+to {
+opacity: 1; /* Al final de la animación, cambia la opacidad a 1 para mostrar el logo */
+}
+}
+/* Estilos para la imagen */
+#logo3 img {
+  max-width: 100%;
+  max-height: 100%;
+
+}
+#section1 {
+z-index: 2;
+color: #FFFFFF;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-weight: 300; /* Define la ligereza de la fuente */
+color: white;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Agrega sombra al texto */
+margin: 20px;
+}
+
+#CV-button {
+    padding: 14px 50px;
+    background-color: #FDD536;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    font-size: 23px;
+    font-weight: 300;
+    
+}
+
+#sectionfinal {
+position: relative; /* Añadir posición relativa para el overlay */
+color: #FFFFFF;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-weight: 300;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+margin: 20px;
+background: url(../img/font.webp) ; /* Cambiar a background y añadir centrado y escala de la imagen */
+}
+
+#sectionfinal::before {
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.829); /* Color de overlay oscuro con transparencia */
+z-index: 1; /* Coloca el overlay encima del contenido */
+}
+
+#sectionfinal h2, #sectionfinal p, #sectionfinal button {
+position: relative;
+z-index: 2; /* Asegura que el texto esté encima del overlay */
+}
+
+#marcas-section {
+display: flex;
+justify-content: space-around;  
+align-items: center;
+padding: 20px 20px; /* Agrega margen a los lados */
+color: #FFFFFF;
+}
+
+.marca {
+flex: 1;
+max-width: calc(33.33% - 40px); /* Ajusta el ancho máximo con margen */
+text-align: center;
+margin: 0 10px; /* Ajusta el margen entre los logos */
+transition: transform 0.3s; /* Agrega una transición suave al efecto de zoom */
+}
+
+.marca:hover {
+transform: scale(1.1); /* Aplica un zoom in al pasar el mouse sobre la marca */
+}
+
+.marca img {
+max-width: 40%;
+height: auto;
+}
+
+.marca2 {
+flex: 1;
+max-width: calc(33.33% - 40px); /* Ajusta el ancho máximo con margen */
+text-align: center;
+margin: 0 10px; /* Ajusta el margen entre los logos */
+transition: transform 0.3s; /* Agrega una transición suave al efecto de zoom */
+cursor: pointer;
+}
+
+.marca2:hover {
+transform: scale(1.1); /* Aplica un zoom in al pasar el mouse sobre la marca */
+}
+
+.marca2 img {
+max-width: 60%;
+height: auto;
+}
+
+#section2 {
+color: #FFFFFF;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-weight: 300; /* Define la ligereza de la fuente */
+color: white;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Agrega sombra al texto */
+margin: 20px;
+}
+
+
+.split-container {
+    display: flex;
+    width: 100%;
+}
+
+.split-left {
+    flex: 1;
+    background-color: rgb(255, 255, 255);
+   
+    display: flex;
+    align-items: center;
+}
+
+.split-left img {
+    max-width: 100%;
+    height: auto;
+}
+
+.split-right {
+    flex: 1;
+    background-color: rgb(20, 20, 20);
+    background-image: url(../img/font.webp);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.overlay-right {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000e1;;
+    display: flex;
+    flex-direction: column; /* Cambia la dirección del flex alineando verticalmente */
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    font-weight: 300;
+}
+
+.image-container {
+width: 100%; /* Ajusta la imagen al 100% del ancho del contenedor */
+height: 100%; /* Ajusta la imagen al 100% de la altura del contenedor */
+position: absolute; /* Establece posición absoluta para superponer la imagen */
+top: 0;
+left: 0;
+z-index: -1; /* Envía la imagen al fondo */
+}
+
+.image-container img {
+width: 100%; /* Ajusta la imagen al 100% del ancho del contenedor */
+height: 100%; /* Ajusta la imagen al 100% de la altura del contenedor */
+object-fit: cover; /* Mantiene la proporción de aspecto y cubre completamente el contenedor */
+}
+
+#game-board {
+    width: 90%x;
+    height: 400px;
+    border: 1px solid #fff;
+    position: relative;
+    z-index: 1;
+}
+
+.snake {
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    position: absolute;
+}
+
+
+#play-button {
+    padding: 14px 50px;
+    background-color: #FDD536;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    font-size: 23px;
+    font-weight: 300;
+    
+}
+
+#gameboard button, #gameboard P {
+position: relative;
+z-index: 2; /* Asegura que el texto esté encima del overlay */
+}
+
+#timer {
+position: relative;
+font-size: 24px;
+margin-top: 10px;
+z-index: 2; 
+}
+
+#footer {
+color: #FFFFFF;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-weight: 300; /* Define la ligereza de la fuente */
+color: white;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Agrega sombra al texto */
+margin: 20px;
+}
